@@ -7,12 +7,13 @@ public class RootState : MonoBehaviour
 
 
     private NavMeshAgent agent;
-    public Transform RootTransform;
+    private Transform RootTransform;
 
     float Healt;
     // Start is called before the first frame update
     void Start()
     {
+        RootTransform = GameObject.FindGameObjectWithTag("finish").transform;
         Healt = 100;
         agent = GetComponent<NavMeshAgent>();
     }
