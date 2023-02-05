@@ -9,7 +9,7 @@ public class RootState : MonoBehaviour
     private NavMeshAgent agent;
     private Transform RootTransform;
 
-    float Healt;
+    public float Healt;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,14 @@ public class RootState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ÝsDead();
         agent.destination = RootTransform.position;
+    }
+    void ÝsDead()
+    {
+        if (Healt <= 0 )
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
