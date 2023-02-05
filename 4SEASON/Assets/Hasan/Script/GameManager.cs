@@ -9,21 +9,22 @@ public class GameManager : MonoBehaviour
     public int counter = 0;
     private int spawnIndex = 0;
 
-    private void Update()
+
+    private void OnCollisionEnter(Collision other)
     {
-        GameObject[] Roots = GameObject.FindGameObjectsWithTag("Root");
-        foreach (GameObject root in Roots)
+        if (other.gameObject.tag == "Root")
         {
-            if (root.transform.position == spawnPoints[spawnIndex].position)
+            Debug.Log("111");
+            Destroy(other.gameObject);
+            counter++;
+            if (counter % 10 == 0)
             {
-                Destroy(root);
-                counter++;
-                if (counter % 10 == 0)
-                {
-                    spawnIndex = (spawnIndex + 1) % spawnPoints.Length;
-                    Instantiate(treePrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-                }
+                spawnIndex = (spawnIndex + 1) % spawnPoints.Length;
+                Instantiate(treePrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
             }
         }
     }
+    
+
+
 }
